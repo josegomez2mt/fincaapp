@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.ForeignKey;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -28,11 +29,13 @@ public class Reservation implements Serializable{
     @ManyToOne
     @JoinColumn(name="client", foreignKey = @ForeignKey(name = "fk_ReservationClient"))
     @JsonIgnoreProperties("reservations")
+    @JsonIgnore
     private Client client;
     
     @ManyToOne
     @JoinColumn(name="farm", foreignKey = @ForeignKey(name = "fk_ReservationFarm"))
     @JsonIgnoreProperties("reservations")
+    @JsonIgnore
     private Farm farm;
 
     @OneToMany(cascade ={CascadeType.PERSIST},mappedBy = "reservation")
