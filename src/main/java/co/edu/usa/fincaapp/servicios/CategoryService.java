@@ -14,7 +14,7 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     public List<Category> getCategories(){
-        return categoryRepository.getCategorys();
+        return categoryRepository.getCategories();
     }
 
     public Category getCategory(Long id){

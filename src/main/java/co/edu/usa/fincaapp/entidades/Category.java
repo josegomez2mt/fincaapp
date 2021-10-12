@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
-@Table(name="categorys")
+@Table(name="categories")
 public class Category implements Serializable{
     @Id
     @Column(name="id")
