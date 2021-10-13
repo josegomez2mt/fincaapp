@@ -26,4 +26,7 @@ public class ReservationService {
         return reservationRepository.saveReservation(reservation);
     }
     
+    public void deleteAll(){
+        reservationRepository.deleteAll();
+    }
 }

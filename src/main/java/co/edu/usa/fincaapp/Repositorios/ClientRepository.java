@@ -32,4 +32,8 @@ public class ClientRepository {
     public void deleteClientByID(Long id){
         clientCrudRepository.deleteById(id);
     }
+
+    public void deleteAll(){
+        clientCrudRepository.deleteAll();
+    }
 }

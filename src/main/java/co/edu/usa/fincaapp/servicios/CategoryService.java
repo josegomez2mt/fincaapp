@@ -21,8 +21,12 @@ public class CategoryService {
         return categoryRepository.getCategoryById(id).get();
     }
 
-    public Category savaCategory(Category category){
+    public Category saveCategory(Category category){
         return categoryRepository.saveCategory(category);
+    }
+
+    public void deleteAll(){
+        categoryRepository.deleteAll();
     }
     
 }

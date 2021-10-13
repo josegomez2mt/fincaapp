@@ -32,4 +32,8 @@ public class ScoreRepository {
     public void deleteScoreById(Long id){
         scoreCrudRepository.deleteById(id);
     }
+
+    public void deleteAll(){
+        scoreCrudRepository.deleteAll();
+    }
 }

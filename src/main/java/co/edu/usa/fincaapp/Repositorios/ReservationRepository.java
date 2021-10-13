@@ -32,4 +32,8 @@ public class ReservationRepository {
     public void deleteReservationById(Long id){
         reservationCrudRepository.deleteById(id);
     }
+
+    public void deleteAll(){
+        reservationCrudRepository.deleteAll();
+    }
 }

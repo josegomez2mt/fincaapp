@@ -32,4 +32,8 @@ public class CategoryRepository {
     public void deleteCategoryById(Long id){
         categoryCrudRepository.deleteById(id);
     }
+
+    public void deleteAll(){
+        categoryCrudRepository.deleteAll();
+    }
 }

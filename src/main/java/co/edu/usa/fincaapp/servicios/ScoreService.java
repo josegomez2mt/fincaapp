@@ -26,4 +26,7 @@ public class ScoreService {
         return scoreRepository.saveScore(Score);
     }
     
+    public void deleteAll(){
+        scoreRepository.deleteAll();
+    }
 }

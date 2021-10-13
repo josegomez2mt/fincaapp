@@ -79,4 +79,8 @@ public class ClientService {
         }
         return false;
     }
+
+    public void deleteAll(){
+        clienteRepository.deleteAll();
+    }
 }

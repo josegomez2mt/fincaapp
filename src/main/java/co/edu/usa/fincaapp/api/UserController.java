@@ -11,29 +11,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.usa.fincaapp.entidades.Reservation;
-import co.edu.usa.fincaapp.servicios.ReservationService;
+import co.edu.usa.fincaapp.entidades.User;
+import co.edu.usa.fincaapp.servicios.UserService;
 
 @RestController
-@RequestMapping("api/Reservation")
+@RequestMapping("api/User")
 @CrossOrigin(origins = "*")
-public class ReservationController {
+public class UserController {
     @Autowired
-    private ReservationService reservationService;
-
+    private UserService userService;
+    
     @GetMapping("/all")
-    public List<Reservation> getReservations(){
-        return reservationService.getReservations();
+    public List<User> getUsers(){
+        return userService.getUsers();
     }
 
     @PostMapping("/save")
-    public Reservation saveReservation(@RequestBody Reservation reservation){
-        Reservation reservationSave = reservationService.saveReservation(reservation);
-        return reservationSave;
+    public User saveUser(@RequestBody User user){
+        User userSave = userService.saveUser(user);
+        return userSave;
     }
 
     @DeleteMapping("/deleteAll")
-    public void deleteAllReservation(){
-        reservationService.deleteAll();
+    public void deleteAllUser(){
+        userService.deleteAll();
     }
 }

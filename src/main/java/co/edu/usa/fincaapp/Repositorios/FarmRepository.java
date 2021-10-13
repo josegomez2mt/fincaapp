@@ -32,4 +32,8 @@ public class FarmRepository {
     public void deleteFarmById(Long id){
         farmCrudRepository.deleteById(id);
     }
+
+    public void deleteAll(){
+        farmCrudRepository.deleteAll();
+    }
 }

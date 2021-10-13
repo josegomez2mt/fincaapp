@@ -32,4 +32,8 @@ public class MessageRepository {
     public void deleteMessageById(Long idMessage){
         messageCrudRepository.deleteById(idMessage);
     }
+
+    public void deleteAll(){
+        messageCrudRepository.deleteAll();
+    }
 }

@@ -25,4 +25,7 @@ public class FarmService {
         return farmRepository.saveFarm(farm);
     }
 
+    public void deleteAll(){
+        farmRepository.deleteAll();
+    }
 }
