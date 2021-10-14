@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idMessage;
     @Column(name="messageText", nullable = false, length=250)
     private String messageText;
 
@@ -34,12 +34,12 @@ public class Message implements Serializable {
     @JsonIgnoreProperties("messages")
     private Farm farm;
 
-    public Long getId() {
-        return id;
+    public Long getIdMessage() {
+        return idMessage;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdMessage(Long idMessage) {
+        this.idMessage = idMessage;
     }
 
     public String getMessageText() {
