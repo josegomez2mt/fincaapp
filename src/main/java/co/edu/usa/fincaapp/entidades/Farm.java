@@ -28,7 +28,7 @@ public class Farm implements Serializable{
     @Column(name="address", nullable = false, length=45)
     private String address;
     @Column(name="extension", precision=5, scale = 0)
-    private Double extension;
+    private Integer extension;
     @Column(name="description",  length=250)
     private String description;
     
@@ -67,10 +67,10 @@ public class Farm implements Serializable{
     public void setAddress(String address) {
         this.address = address;
     }
-    public Double getExtension() {
+    public Integer getExtension() {
         return extension;
     }
-    public void setExtension(Double extension) {
+    public void setExtension(Integer extension) {
         this.extension = extension;
     }
     public String getDescription() {

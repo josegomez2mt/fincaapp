@@ -21,14 +21,19 @@ public class Client implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long idClient;
-    @Column(name="name", nullable = false, length=250)    
-    private String name;
+    
     @Column(name="email", nullable = false, length=45)
     private String email;
-    @Column(name="age")
-    private Integer age;
+
     @Column(name="password", nullable = false, length=45)
     private String password;
+
+    @Column(name="name", nullable = false, length=250)    
+    private String name;
+    
+    @Column(name="age")
+    private Integer age;
+    
 
     @OneToMany(cascade ={CascadeType.PERSIST},mappedBy = "client")
     @JsonIgnoreProperties("client")
@@ -36,6 +41,7 @@ public class Client implements Serializable{
 
     @OneToMany(cascade ={CascadeType.PERSIST},mappedBy = "client")
     @JsonIgnoreProperties("client")
+    
     private List<Reservation> reservations;
 
     public Long getIdClient() {
@@ -46,14 +52,6 @@ public class Client implements Serializable{
         this.idClient = idClient;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -62,20 +60,28 @@ public class Client implements Serializable{
         this.email = email;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public List<Message> getMessages() {
@@ -94,6 +100,5 @@ public class Client implements Serializable{
         this.reservations = reservations;
     }
 
-
-    
+        
 }

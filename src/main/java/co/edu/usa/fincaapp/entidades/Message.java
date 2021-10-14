@@ -25,14 +25,14 @@ public class Message implements Serializable {
     private String messageText;
 
     @ManyToOne
-    @JoinColumn(name="client", foreignKey = @ForeignKey(name = "fk_messagesClient"))
-    @JsonIgnoreProperties("messages")
-    private Client client;
+    @JoinColumn(name="farm", foreignKey = @ForeignKey(name = "fk_MessageFarm"))
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Farm farm;
 
     @ManyToOne
-    @JoinColumn(name="farm", foreignKey = @ForeignKey(name = "fk_MessageFarm"))
-    @JsonIgnoreProperties("messages")
-    private Farm farm;
+    @JoinColumn(name="client", foreignKey = @ForeignKey(name = "fk_messagesClient"))
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Client client;
 
     public Long getIdMessage() {
         return idMessage;
@@ -66,6 +66,6 @@ public class Message implements Serializable {
         this.client = client;
     }
 
-    
-    
+
+        
 }
