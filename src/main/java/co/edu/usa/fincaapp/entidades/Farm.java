@@ -38,10 +38,7 @@ public class Farm implements Serializable{
     private Category category;
 
     @OneToMany(cascade ={CascadeType.PERSIST},mappedBy = "farm")
-    @JsonIgnoreProperties("farm")
-/*
-    @JsonIgnoreProperties("messages" "reservation")
-*/
+    @JsonIgnoreProperties({"farm","client"})
     private List<Message> messages;
 
 
