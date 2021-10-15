@@ -29,7 +29,7 @@ public class Score implements Serializable{
 
     @ManyToOne
     @JoinColumn(name="reservation", foreignKey = @ForeignKey(name = "fk_ScoreReservations"))
-    @JsonIgnoreProperties("scores")
+    @JsonIgnoreProperties("score")
     private Reservation reservation;
 
     public Long getId() {

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.ForeignKey;
 
@@ -33,27 +34,21 @@ public class Reservation implements Serializable{
     private Date devolutionDate;
     
     @Column(name="status")
-    private String status;
+    private String status  = "created";
 
     @ManyToOne
     @JoinColumn(name="farm", foreignKey = @ForeignKey(name = "fk_ReservationFarm"))
-    /*
-    @JsonIgnoreProperties({"reservations","client","{messages:[{client}]}"})    
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"messages:client"})    
-    */
-    @JsonIgnoreProperties({"reservations","messages"})
+    @JsonIgnoreProperties({"reservations"})
     private Farm farm;
     
-    
-
     @ManyToOne
     @JoinColumn(name="client", foreignKey = @ForeignKey(name = "fk_ReservationClient"))
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
     
-    @OneToMany(cascade ={CascadeType.PERSIST},mappedBy = "reservation")
+    @OneToOne(cascade ={CascadeType.PERSIST},mappedBy = "reservation")
     @JsonIgnoreProperties("score")
-    private List<Score> score;
+    private Score score;
 
     public Long getIdReservation() {
         return idReservation;
@@ -103,13 +98,12 @@ public class Reservation implements Serializable{
         this.client = client;
     }
 
-    public List<Score> getScore() {
+    public Score getScore() {
         return score;
     }
 
-    public void setScore(List<Score> score) {
+    public void setScore(Score score) {
         this.score = score;
     }
-
-            
+          
 }
