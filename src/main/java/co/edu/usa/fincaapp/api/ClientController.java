@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -36,6 +37,14 @@ public class ClientController {
         Client clientSave = clientService.saveClient(client);
         return clientSave;
     }
+
+    @PutMapping("/update")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Client updateUser(@RequestBody Client user){
+        Client clientSave = clientService.saveClient(user);
+        return clientSave;
+    }
+
     @DeleteMapping("/deleteAll")
     public void deleteAllClient(){
         clientService.deleteAll();

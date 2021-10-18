@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -33,6 +34,13 @@ public class MessageController {
     @PostMapping("/save")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Message saveMessage(@RequestBody Message message){
+        Message messageSave = messageService.saveMessage(message);
+        return messageSave;
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Message updateMessage(@RequestBody Message message){
         Message messageSave = messageService.saveMessage(message);
         return messageSave;
     }
