@@ -1,7 +1,6 @@
 package co.edu.usa.fincaapp.api;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +21,7 @@ import co.edu.usa.fincaapp.servicios.CategoryService;
 
 @RestController
 @RequestMapping("api/Category")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST, RequestMethod.DELETE })
+@CrossOrigin(origins = "*")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
@@ -44,7 +43,7 @@ public class CategoryController {
         categoryService.deleteAll();
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Long> deletePost(@PathVariable Long id) {
         categoryService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
