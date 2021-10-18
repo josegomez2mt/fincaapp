@@ -74,7 +74,7 @@ public class ClientService {
     public boolean delete(Long id){
         Optional<Client> oClient = getClient(id);
         if (!oClient.isEmpty()){
-            clienteRepository.deleteClient(oClient.get());
+            clienteRepository.deleteClient(oClient.get());            
             return  true;
         }
         return false;
