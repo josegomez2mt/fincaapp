@@ -46,6 +46,13 @@ public class UserController {
         return userSave;
     }
 
+    @PutMapping("/update1")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public User update1User(@RequestBody User user){
+        User userSave = userService.saveUser(user);
+        return userSave;
+    }
+
     @DeleteMapping("/deleteAll")
     public void deleteAllUser(){
         userService.deleteAll();
