@@ -71,13 +71,11 @@ public class ClientService {
         return seBorro;
     }
 
-    public boolean delete(Long id){
+    public void delete(Long id){
         Optional<Client> oClient = getClient(id);
         if (!oClient.isEmpty()){
-            clienteRepository.deleteClient(oClient.get());            
-            return  true;
-        }
-        return false;
+            clienteRepository.deleteClient(oClient.get());                        
+        }        
     }
 
     public void deleteAll(){

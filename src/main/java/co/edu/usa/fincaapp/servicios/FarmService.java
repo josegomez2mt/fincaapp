@@ -1,6 +1,7 @@
 package co.edu.usa.fincaapp.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class FarmService {
         return farmRepository.getFarms();
     }
 
-    public Farm getFarm(Long id){
-        return farmRepository.getFarmById(id).get();
+    public Optional<Farm> getFarm(Long id){
+        return farmRepository.getFarmById(id);
     }
 
     public Farm saveFarm(Farm farm){
@@ -28,4 +29,13 @@ public class FarmService {
     public void deleteAll(){
         farmRepository.deleteAll();
     }
+
+    public void delete(Long id){
+        Optional<Farm> oFarm = getFarm(id);
+        if (!oFarm.isEmpty()){
+            farmRepository.deleteFarm(oFarm.get());                        
+        }        
+    }
+
+
 }

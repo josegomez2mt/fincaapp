@@ -1,6 +1,7 @@
 package co.edu.usa.fincaapp.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class ScoreService {
         return scoreRepository.getScores();
     }
 
-    public Score getScore(Long id){
-        return scoreRepository.getScoreById(id).get();
+    public  Optional<Score> getScore(Long id){
+        return scoreRepository.getScoreById(id);
     }
 
     public Score saveScore(Score Score){
@@ -28,5 +29,12 @@ public class ScoreService {
     
     public void deleteAll(){
         scoreRepository.deleteAll();
+    }
+
+    public void delete(Long id){
+        Optional<Score> oScore = getScore(id);
+        if (!oScore.isEmpty()){
+            scoreRepository.deleteScore(oScore.get());                        
+        }        
     }
 }

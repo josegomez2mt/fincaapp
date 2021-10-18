@@ -1,6 +1,7 @@
 package co.edu.usa.fincaapp.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class CategoryService {
         return categoryRepository.getCategories();
     }
 
-    public Category getCategory(Long id){
-        return categoryRepository.getCategoryById(id).get();
+    public Optional<Category> getCategory(Long id){
+        return categoryRepository.getCategoryById(id);
     }
 
     public Category saveCategory(Category category){
@@ -27,6 +28,13 @@ public class CategoryService {
 
     public void deleteAll(){
         categoryRepository.deleteAll();
+    }
+
+    public void delete(Long id){
+        Optional<Category> oCategory = getCategory(id);
+        if (!oCategory.isEmpty()){
+            categoryRepository.deleteCategory(oCategory.get());                        
+        }        
     }
     
 }

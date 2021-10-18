@@ -1,6 +1,7 @@
 package co.edu.usa.fincaapp.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class ReservationService {
         return reservationRepository.getReservations();
     }
 
-    public Reservation getReservation(Long id){
-        return reservationRepository.getReservationById(id).get();
+    public Optional<Reservation> getReservation(Long id){
+        return reservationRepository.getReservationById(id);
     }
 
     public Reservation saveReservation(Reservation reservation){
@@ -28,5 +29,12 @@ public class ReservationService {
     
     public void deleteAll(){
         reservationRepository.deleteAll();
+    }
+
+    public void delete(Long id){
+        Optional<Reservation> oReservation = getReservation(id);
+        if (!oReservation.isEmpty()){
+            reservationRepository.deleteReservation(oReservation.get());                        
+        }        
     }
 }

@@ -1,6 +1,7 @@
 package co.edu.usa.fincaapp.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class UserService {
         return userRepository.getUsers();
     }
 
-    public User getUser(Long id){
-        return userRepository.getUserById(id).get();
+    public Optional<User> getUser(Long id){
+        return userRepository.getUserById(id);
     }
 
     public User saveUser(User user){
@@ -27,6 +28,13 @@ public class UserService {
 
     public void deleteAll(){
         userRepository.deleteAll();
+    }
+
+    public void delete(Long id){
+        Optional<User> oUser = getUser(id);
+        if (!oUser.isEmpty()){
+            userRepository.deleteUser(oUser.get());                        
+        }        
     }
 
 }
