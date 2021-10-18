@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,11 +40,32 @@ public class CategoryController {
         return categorySave;
     }
 
-    @PutMapping("/save")
+    @PutMapping("/update")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Category updateCategory(@RequestBody Category category){
         Category categorySave = categoryService.saveCategory(category);
         return categorySave;
+    }
+
+    @PutMapping("/update1")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public Category update1Category(@RequestBody Category category){
+        Category categorySave = categoryService.saveCategory(category);
+        return categorySave;
+    }
+
+    @RequestMapping(value={"/update2"},method=RequestMethod.PUT) @ResponseStatus(HttpStatus.NO_CONTENT) 
+    @ResponseBody 
+    public Category updatecategory2(@RequestBody Category category){
+        Category categorySave = categoryService.saveCategory(category);
+        return categorySave;        
+    }
+
+    @RequestMapping(value={"/update3"},method=RequestMethod.PUT) @ResponseStatus(HttpStatus.NO_CONTENT) 
+    @ResponseBody 
+    public Category updatecategory3(@RequestBody Category category){
+        Category categorySave = categoryService.saveCategory(category);
+        return categorySave;        
     }
 
     @DeleteMapping("deleteAll")
@@ -62,4 +84,8 @@ public class CategoryController {
         categoryService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+    
+
 }
