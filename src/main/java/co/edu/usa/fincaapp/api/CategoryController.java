@@ -45,10 +45,15 @@ public class CategoryController {
         categoryService.deleteAll();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteR/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public void deletePost(@PathVariable Long id) {
         categoryService.delete(id);        
     }
     
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<Long> delete(@PathVariable Long id) {
+        categoryService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
