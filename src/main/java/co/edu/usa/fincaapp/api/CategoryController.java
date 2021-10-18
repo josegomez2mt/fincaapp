@@ -22,7 +22,7 @@ import co.edu.usa.fincaapp.servicios.CategoryService;
 
 @RestController
 @RequestMapping("api/Category")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST, RequestMethod.DELETE })
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT })
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;

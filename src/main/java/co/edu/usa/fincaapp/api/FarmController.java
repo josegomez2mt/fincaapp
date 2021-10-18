@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import co.edu.usa.fincaapp.entidades.Farm;
 import co.edu.usa.fincaapp.servicios.FarmService;
 
 @RestController
 @RequestMapping("/api/Farm")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT })
 public class FarmController {
     @Autowired
     private FarmService farmService;
