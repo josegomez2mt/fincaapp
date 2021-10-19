@@ -57,4 +57,10 @@ public class ScoreController {
         scoreService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Long> deleteId(@PathVariable Long id) {
+        scoreService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
