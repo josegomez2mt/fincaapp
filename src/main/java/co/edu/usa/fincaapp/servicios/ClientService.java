@@ -56,6 +56,12 @@ public class ClientService {
                     if(client.getPassword()!=null){
                         cli.setPassword(client.getPassword());
                     }
+                    if(client.getMessages()!=null){
+                        cli.setMessages(client.getMessages());
+                    }
+                    if(client.getReservations()!=null){
+                        cli.setReservations(client.getReservations());
+                    }
                     return clienteRepository.saveClient(cli);
                 }
             }

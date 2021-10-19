@@ -26,6 +26,41 @@ public class FarmService {
         return farmRepository.saveFarm(farm);
     }
 
+    public Farm updateFarme(Farm farm){
+        if (farm != null) {
+            if (farm.getId() != null){
+                Optional<Farm> oFarm = getFarm(farm.getId());
+                if (!oFarm.isEmpty()){
+                    Farm far = oFarm.get();
+                    if (farm.getName() !=null){
+                        far.setName(farm.getName());
+                    }
+                    if (farm.getAddress() !=null){
+                        far.setName(farm.getAddress());
+                    }
+                    if(farm.getExtension()!=null){
+                        far.setExtension(farm.getExtension());
+                    }
+                    if(farm.getDescription()!=null){
+                        far.setDescription(farm.getDescription());
+                    }
+                    if(farm.getCategory()!=null){
+                        far.setCategory(farm.getCategory());
+                    }
+                    if(farm.getMessages()!=null){
+                        far.setMessages(farm.getMessages());
+                    }
+                    if(farm.getReservations()!=null){
+                        far.setReservations(farm.getReservations());
+                    }
+
+                    return farmRepository.saveFarm(far);
+                }
+            }
+        }
+        return farm;
+    }
+    
     public void deleteAll(){
         farmRepository.deleteAll();
     }

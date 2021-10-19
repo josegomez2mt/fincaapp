@@ -56,10 +56,9 @@ public class ClientController {
         clientService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    
+
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Long> deleteId(@PathVariable Long id) {
-        clientService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public void deleteId(@PathVariable Long id) {
+        clientService.delete(id);        
     }
 }

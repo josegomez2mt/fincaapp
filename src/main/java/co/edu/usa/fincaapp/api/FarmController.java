@@ -58,9 +58,8 @@ public class FarmController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Long> deleteId(@PathVariable Long id) {
-        farmService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public void deleteId(@PathVariable Long id) {
+        farmService.delete(id);        
     }
 }
 
