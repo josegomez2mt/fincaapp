@@ -36,7 +36,7 @@ public class FarmService {
                         far.setName(farm.getName());
                     }
                     if (farm.getAddress() !=null){
-                        far.setName(farm.getAddress());
+                        far.setAddress(farm.getAddress());
                     }
                     if(farm.getExtension()!=null){
                         far.setExtension(farm.getExtension());
