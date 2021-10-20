@@ -26,6 +26,27 @@ public class UserService {
         return userRepository.saveUser(user);
     }
 
+    public User updateUser(User user){
+        if (user != null) {
+            if (user.getId() != null){
+                Optional<User> oUser = getUser(user.getId());
+                if (!oUser.isEmpty()){
+                    User sco = oUser.get();
+                    if (user.getName() !=null){
+                        sco.setName(user.getName());
+                    }
+                    if (user.geteMail() !=null){
+                        sco.seteMail(user.geteMail());
+                    }
+                    if (user.getPassword() !=null){
+                        sco.setPassword(user.getPassword());
+                    }
+                    return userRepository.saveUser(sco);
+                }
+            }
+        }
+        return user;
+    }
     public void deleteAll(){
         userRepository.deleteAll();
     }

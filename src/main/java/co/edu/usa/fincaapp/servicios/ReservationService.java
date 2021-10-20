@@ -27,6 +27,39 @@ public class ReservationService {
         return reservationRepository.saveReservation(reservation);
     }
     
+    public Reservation updateReservation(Reservation reservation){
+        if (reservation != null) {
+            if (reservation.getIdReservation() != null){
+                Optional<Reservation> oReservation = getReservation(reservation.getIdReservation());
+                if (!oReservation.isEmpty()){
+                    Reservation res = oReservation.get();
+                    if (reservation.getStartDate() !=null){
+                        res.setStartDate(reservation.getStartDate());
+                    }
+                    if (reservation.getDevolutionDate() !=null){
+                        res.setDevolutionDate(reservation.getDevolutionDate());
+                    }
+                    if (reservation.getStatus() !=null){
+                        res.setStatus(reservation.getStatus());
+                    }
+
+                    if (reservation.getFarm() !=null){
+                        res.setFarm(reservation.getFarm());
+                    }              
+                    if (reservation.getClient() !=null){
+                        res.setClient(reservation.getClient());
+                    }   
+                    if (reservation.getScore() !=null){
+                        res.setScore(reservation.getScore());
+                    }            
+
+                    return reservationRepository.saveReservation(res);
+                }
+            }
+        }
+        return reservation;
+    }
+    
     public void deleteAll(){
         reservationRepository.deleteAll();
     }

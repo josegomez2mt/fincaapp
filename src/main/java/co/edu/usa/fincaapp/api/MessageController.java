@@ -42,7 +42,7 @@ public class MessageController {
     @PutMapping("/update")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Message updateMessage(@RequestBody Message message){
-        Message messageSave = messageService.saveMessage(message);
+        Message messageSave = messageService.updateMessage(message);
         return messageSave;
     }
 
@@ -57,6 +57,7 @@ public class MessageController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @DeleteMapping(value = "/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteId(@PathVariable Long id) {
         messageService.delete(id);        
     }

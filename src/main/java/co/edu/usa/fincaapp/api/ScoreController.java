@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +42,7 @@ public class ScoreController {
     @PutMapping("/update")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Score updateScore(@RequestBody Score score){
-        Score scoreSave = scoreService.saveScore(score);
+        Score scoreSave = scoreService.updateScore(score);
         return scoreSave;
     }
 
@@ -52,13 +51,8 @@ public class ScoreController {
         scoreService.deleteAll();
     }
 
-    @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Long> deletePost(@PathVariable Long id) {
-        scoreService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
     @DeleteMapping(value = "/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteId(@PathVariable Long id) {
         scoreService.delete(id);        
     }

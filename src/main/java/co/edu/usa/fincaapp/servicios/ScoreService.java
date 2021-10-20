@@ -27,6 +27,29 @@ public class ScoreService {
         return scoreRepository.saveScore(Score);
     }
     
+    public Score updateScore(Score score){
+        if (score != null) {
+            if (score.getId() != null){
+                Optional<Score> oScore = getScore(score.getId());
+                if (!oScore.isEmpty()){
+                    Score sco = oScore.get();
+                    if (score.getScore() !=null){
+                        sco.setScore(score.getScore());
+                    }
+                    if (score.getMessage() !=null){
+                        sco.setMessage(score.getMessage());
+                    }
+                    if (score.getReservation() !=null){
+                        sco.setReservation(score.getReservation());
+                    }
+                    return scoreRepository.saveScore(sco);
+                }
+            }
+        }
+        return score;
+    }
+    
+
     public void deleteAll(){
         scoreRepository.deleteAll();
     }

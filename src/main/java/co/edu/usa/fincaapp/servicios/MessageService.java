@@ -25,6 +25,29 @@ public class MessageService {
     public Message saveMessage(Message message){
         return messageRepository.saveMessage(message);
     }
+    
+    public Message updateMessage(Message message){
+        if (message != null) {
+            if (message.getIdMessage() != null){
+                Optional<Message> oMessage = getMessage(message.getIdMessage());
+                if (!oMessage.isEmpty()){
+                    Message cli = oMessage.get();
+                    if (message.getMessageText() !=null){
+                        cli.setMessageText(message.getMessageText());
+                    }
+                    if (message.getFarm() !=null){
+                        cli.setFarm(message.getFarm());
+                    }              
+                    if (message.getClient() !=null){
+                        cli.setClient(message.getClient());
+                    }              
+
+                    return messageRepository.saveMessage(cli);
+                }
+            }
+        }
+        return message;
+    }
 
     public void deleteAll(){
         messageRepository.deleteAll();

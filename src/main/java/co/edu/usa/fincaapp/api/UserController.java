@@ -42,7 +42,7 @@ public class UserController {
     @PutMapping("/update")
     @ResponseStatus(code = HttpStatus.CREATED)
     public User updateUser(@RequestBody User user){
-        User userSave = userService.saveUser(user);
+        User userSave = userService.updateUser(user);
         return userSave;
     }
 
@@ -65,6 +65,7 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteId(@PathVariable Long id) {
         userService.delete(id);        
     }

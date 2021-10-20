@@ -26,6 +26,25 @@ public class CategoryService {
         return categoryRepository.saveCategory(category);
     }
 
+    public Category updateCategory(Category category){
+        if (category != null) {
+            if (category.getId() != null){
+                Optional<Category> oCategory = getCategory(category.getId());
+                if (!oCategory.isEmpty()){
+                    Category cli = oCategory.get();
+                    if (category.getName() !=null){
+                        cli.setName(category.getName());
+                    }
+                    if (category.getDescription() !=null){
+                        cli.setDescription(category.getDescription());
+                    }                    
+                    return categoryRepository.saveCategory(cli);
+                }
+            }
+        }
+        return category;
+    }
+
     public void deleteAll(){
         categoryRepository.deleteAll();
     }

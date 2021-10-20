@@ -26,7 +26,7 @@ public class FarmService {
         return farmRepository.saveFarm(farm);
     }
 
-    public Farm updateFarme(Farm farm){
+    public Farm updateFarm(Farm farm){
         if (farm != null) {
             if (farm.getId() != null){
                 Optional<Farm> oFarm = getFarm(farm.getId());

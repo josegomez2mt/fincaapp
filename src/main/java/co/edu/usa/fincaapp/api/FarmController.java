@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +41,7 @@ public class FarmController {
     @PutMapping("/update")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Farm updateFarm(@RequestBody Farm farm){
-        Farm farmSave = farmService.saveFarm(farm);
+        Farm farmSave = farmService.updateFarm(farm);
         return farmSave;
     }
 
@@ -52,12 +51,12 @@ public class FarmController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Long> deletePost(@PathVariable Long id) {
+    public void deletePost(@PathVariable Long id) {
         farmService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteId(@PathVariable Long id) {
         farmService.delete(id);        
     }

@@ -43,7 +43,7 @@ public class ReservationController {
     @PutMapping("/update")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Reservation updateReservation(@RequestBody Reservation reservation){
-        Reservation reservationSave = reservationService.saveReservation(reservation);
+        Reservation reservationSave = reservationService.updateReservation(reservation);
         return reservationSave;
     }
 
@@ -59,6 +59,7 @@ public class ReservationController {
     }
 
     @DeleteMapping(value = "/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteId(@PathVariable Long id) {
         reservationService.delete(id);        
     }

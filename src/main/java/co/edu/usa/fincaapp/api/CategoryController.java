@@ -43,7 +43,7 @@ public class CategoryController {
     @PutMapping("/update")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Category updateCategory(@RequestBody Category category){
-        Category categorySave = categoryService.saveCategory(category);
+        Category categorySave = categoryService.updateCategory(category);
         return categorySave;
     }
 
@@ -73,18 +73,19 @@ public class CategoryController {
         categoryService.deleteAll();
     }
 
-    @DeleteMapping("/deleteR/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public void deletePost(@PathVariable Long id) {
         categoryService.delete(id);        
     }
     
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/deleter/{id}")
     public ResponseEntity<Long> delete(@PathVariable Long id) {
         categoryService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @DeleteMapping(value = "/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteId(@PathVariable Long id) {
         categoryService.delete(id);        
     }

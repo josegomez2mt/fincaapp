@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,8 +40,8 @@ public class ClientController {
 
     @PutMapping("/update")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Client updateUser(@RequestBody Client user){
-        Client clientSave = clientService.saveClient(user);
+    public Client updateUser(@RequestBody Client cliente){
+        Client clientSave = clientService.updateCliente(cliente);
         return clientSave;
     }
 
@@ -52,12 +51,12 @@ public class ClientController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Long> deletePost(@PathVariable Long id) {
-        clientService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public void deletePost(@PathVariable Long id) {
+        clientService.delete(id);        
     }
 
     @DeleteMapping(value = "/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteId(@PathVariable Long id) {
         clientService.delete(id);        
     }
