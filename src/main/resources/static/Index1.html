@@ -1,40 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single sign on with github</title>
-
-
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Deluxe Fincas</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
     <base href="/" />
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <link rel='stylesheet' type='text/css' href='/css/maquetado.css' />
-
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/maquetado.css'>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
 </head>
 
 <body>
-    <div id="navbar" class="barra">
-        <div id="logo" class="reverse">            
-            <div class="logo">Deluxe <span>Fincas</span></div>
+    <h1>Demo</h1>
+
+    <div class="container unauthenticated">
+        
+        <div>
+            With GitHub: <a href="/oauth2/authorization/github">click here</a>
+        </div>
+        <div>
+            With Google: <a href="/oauth2/authorization/google">click here</a>
         </div>
     </div>
 
-        
-    <div class="titulo noautenticado">
-        Iniciar Session: <a href="/oauth2/authorization/github" class="btn btn-outline-primary">Click aqui</a>
-    </div>
-    <div class="container autenticado" style="display: none;">
-        Autenticado como <span id="user"> </span>
+    <div class="container authenticated">
+        Logged in as: <span id="user"></span>
         <div>
             <button onClick="logout()" class="btn btn-primary">Logout</button>
         </div>
     </div>
+    <div class="container text-danger error"></div>
 
-    </div>
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"> </script>
+
     <script type="text/javascript">
         $.ajaxSetup({
             beforeSend: function (xhr, settings) {
@@ -50,22 +52,29 @@
             }
         });
 
-        $.get('/user', function (data) {
-            $('#user').html(data.name);
-            $('.noautenticado').hide();
-            $('.autenticado').show();
+        $.get("/user", function (data) {
+            $("#user").html(data.name);
+            $(".unauthenticated").hide()
+            $(".authenticated").show()
         });
+
         var logout = function () {
             $.post("/logout", function () {
                 $("#user").html('');
-                $(".noautenticado").show();
-                $(".autenticado").hide();
+                $(".unauthenticated").show();
+                $(".authenticated").hide();
             })
             return true;
+
+            $.get("/error", function(data) {
+                if (data) {
+                    $(".error").html(data);
+                } else {
+                    $(".error").html('');
+                }
+            });
         }
-
     </script>
-
 </body>
 
 </html>
