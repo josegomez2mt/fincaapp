@@ -199,7 +199,8 @@ Presentacion varia
 
 h1,
 th,
-td {
+td,
+.tit {
     color: aliceblue;
     font-weight: 600;
 }
