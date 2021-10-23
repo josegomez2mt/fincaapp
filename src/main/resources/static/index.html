@@ -69,6 +69,7 @@
             $("#user").html(data.name);
             $(".unauthenticated").hide()
             $(".authenticated").show()
+            window.location.href="inicio.html";
         });
 
         var logout = function () {
@@ -87,6 +88,9 @@
                 }
             });
         }
+        
+        $(".authenticated").hide();
+
     </script>
 </body>
 
