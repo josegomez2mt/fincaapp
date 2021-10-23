@@ -56,7 +56,7 @@ public class OAuth2Controller extends WebSecurityConfigurerAdapter{
 			.oauth2Login();
        
         
-      // http.cors().and().csrf().disable();
+       http.cors().and().csrf().disable();
        
     }
 
