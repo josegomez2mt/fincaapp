@@ -29,19 +29,22 @@
             <h1>Busca tu confort</h1>
         </div>
         <div class="formulario">
-
-            <div class="campos unauthenticated">
-                <p class="tit">Loguearse con Cuenta GitHub</p>
-                <a href="/oauth2/authorization/github" class="btn btn-lg btn-primary">Iniciar Sesion</a>
-            </div>
-
-            <div class="campos authenticated">
-                <p class="tit">Logueado como : <span id="user"></span></p>
-                <div>
-                    <button onClick="logout()" class="btn btn-lg btn-primary">Cerrar Sesión</button>
+            <div class="campos">
+                <div class="form-floating mb-3 unauthenticated">
+                    <p class="tit">Loguearse con Cuenta GitHub</p>
+                    <a href="/oauth2/authorization/github" class="btn btn-lg btn-primary">Iniciar Sesion</a>
                 </div>
+                <div class="form-floating mb-3 authenticated">
+                    <p class="tit">Logueado como : <span id="user"></span></p>
+                    <div>
+                        <button onClick="logout()" class="btn btn-lg btn-primary">Cerrar Sesión</button>
+                    </div>
+                </div>
+                <div class="form-floating mb-3 authenticated">
+                    <a href="inicio.html" class="btn btn-lg btn-primary">Entrar</a>
+                </div>
+                <div class="campos text-danger error"></div>
             </div>
-            <div class="container text-danger error"></div>
         </div>
 
         <div class="Listado"></div>
